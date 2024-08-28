@@ -1,6 +1,10 @@
 package com.starwars.app.java_starwars_app;
 
-public class Jedi {
+import com.starwars.app.java_starwars_app.interfaces.IHasLightSaber;
+
+public class Jedi 
+        implements IHasLightSaber
+{
     private String name;
     private LightSaber lightSaber;
 
