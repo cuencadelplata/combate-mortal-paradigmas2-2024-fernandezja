@@ -8,6 +8,14 @@ public class Jedi
     private String name;
     private LightSaber lightSaber;
 
+    public Jedi(){
+        
+    }
+
+    public Jedi(String name ){
+        setName(name);
+    }
+
     public String getName(){
         return name;
     }
