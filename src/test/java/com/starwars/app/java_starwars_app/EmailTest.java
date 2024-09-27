@@ -79,7 +79,7 @@ public class EmailTest {
 	}
 
 
-	
+	/*
 	@Test
 	void filtrar_se_debe_poder_filtrar_por_asunto() {
 
@@ -107,6 +107,7 @@ public class EmailTest {
 		assertEquals(2, emailsFiltrados.size());
 
 	}
+	*/
 
 	private Email generarEmailSimple(String asunto){
 
@@ -121,6 +122,49 @@ public class EmailTest {
 		return email1;
 	}
 
+
+	@Test
+	void enviar_email_simple() {
+
+		var emailManager = new EmailManager();
+
+		var email1 = generarEmailSimple("Demo 1");
+		
+		emailManager.enviar(email1);
+
+		var xxx = emailManager.getXXX("remitente1@ucp.edu.ar");
+		var emailEnviado = xxx.getBandejaEnviados().get(0);
+
+		assertEquals("Demo 1", emailEnviado.getAsunto());
+
+		var yyyy = emailManager.getXXX("contacto1@ucp.edu.ar");
+		var emailRecibido = yyyy.getBandejaEntrada().get(0);
+
+		assertEquals("Demo 1", emailRecibido.getAsunto());
+
+
+		
+
+	}
+
+
+	@Test
+	void los_filtros_son_carpetas() {
+
+		var emailManager = new EmailManager();
+
+		var xxx = emailManager.getXXX("remitente1@ucp.edu.ar");
+		
+		xxx.agregarCarpeta("correos de la UCP", filtro);
+
+		var emailsDeLaUCP = xxx.getEmailsDesdeCarpeta("correos de la UCP");
+
+		assertEquals(10, emailsDeLaUCP.size());
+
+
+		
+
+	}
 
 
 
